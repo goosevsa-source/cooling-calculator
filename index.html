@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Комплексный инженерный расчёт системы охлаждения</title>
+    <!-- Связываем html со стилями -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="latex-page">
+    <h1 class="title">Комплексный гидравлический, теплотехнический расчёт <br> и подбор мощности насоса</h1>
+    
+    <!-- Панель управления параметрами -->
+    <div class="input-panel">
+        <h3>Панель управления параметрами расчёта</h3>
+        <div class="grid-3">
+            <div class="input-group">
+                <label for="param-E">Компенсируемая энергия (E), кВт·ч:</label>
+                <input type="number" id="param-E" value="1600" min="1" oninput="calculateAll()">
+            </div>
+            <div class="input-group">
+                <label for="param-t1">Температура на входе (t₁), °C:</label>
+                <input type="number" id="param-t1" value="25" oninput="calculateAll()">
+            </div>
+            <div class="input-group">
+                <label for="param-t2">Температура на выходе (t₂), °C:</label>
+                <input type="number" id="param-t2" value="45" oninput="calculateAll()">
+            </div>
+            <div class="input-group">
+                <label for="param-coolant">Тип хладагента:</label>
+                <select id="param-coolant" onchange="calculateAll()">
+                    <option value="4.19" selected>Вода чистая (c = 4.19 кДж/кг·°C)</option>
+                    <option value="3.70">Пропиленгликоль 30% (c = 3.70 кДж/кг·°C)</option>
+                    <option value="3.20">Пропиленгликоль 50% (c = 3.20 кДж/кг·°C)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="param-pipeMode">Режим выбора трубы:</label>
+                <select id="param-pipeMode" onchange="togglePipeMode()">
+                    <option value="standard">Стандартный сортамент (DN)</option>
+                    <option value="custom">Произвольный ввод диаметра</option>
+                </select>
+            </div>
+            <div class="input-group" id="group-standard-dn">
+                <label for="param-dn">Номинальный диаметр трубы (DN):</label>
+                <select id="param-dn" onchange="calculateAll()">
+                    <option value="15">DN15 (внутр. Ø 16 мм)</option>
+                    <option value="20">DN20 (внутр. Ø 21.6 мм)</option>
+                    <option value="25">DN25 (внутр. Ø 27.2 мм)</option>
+                    <option value="32">DN32 (внутр. Ø 35.9 мм)</option>
+                    <option value="40">DN40 (внутр. Ø 41.8 мм)</option>
+                    <option value="50" selected>DN50 (внутр. Ø 53 мм)</option>
+                    <option value="65">DN65 (внутр. Ø 68.8 мм)</option>
+                    <option value="80">DN80 (внутр. Ø 80.8 мм)</option>
+                    <option value="100">DN100 (внутр. Ø 108 мм)</option>
+                    <option value="125">DN125 (внутр. Ø 133 мм)</option>
+                    <option value="150">DN150 (внутр. Ø 159 мм)</option>
+                </select>
+            </div>
+            <div class="input-group" id="group-custom-d" style="display:none;">
+                <label for="param-customD">Внутренний диаметр трубы, мм:</label>
+                <input type="number" id="param-customD" value="60" min="1" oninput="calculateAll()">
+            </div>
+            <div class="input-group">
+                <label for="param-N">Количество параллельных труб (N):</label>
+                <input type="number" id="param-N" value="1" min="1" step="1" oninput="calculateAll()">
+            </div>
+            <div class="input-group">
+                <label for="param-Hgeo">Высота подъёма столба (H_гео), м:</label>
+                <input type="number" id="param-Hgeo" value="12" min="0" oninput="calculateAll()">
+            </div>
+            <div class="input-group">
+                <label for="param-L">Длина одной трубы, м:</label>
+                <input type="number" id="param-L" value="45" min="1" oninput="calculateAll()">
+            </div>
+            <div class="input-group">
+                <label for="param-kms">Коэф. местных сопротивлений (КМС):</label>
+                <input type="number" id="param-kms" value="5.0" min="0" step="0.5" oninput="calculateAll()">
+            </div>
+            <div class="input-group">
+                <label for="param-eff">КПД насосного агрегата (&eta;):</label>
+                <input type="number" id="param-eff" value="0.65" min="0.1" max="0.95" step="0.05" oninput="calculateAll()">
+            </div>
+            <!-- Новая кнопка автоподбора в 3-й колонке -->
+            <div class="input-group" style="justify-content: flex-end;">
+                <button type="button" id="btn-autoselect" onclick="autoSelectPipe()">Подобрать оптимальный DN</button>
+            </div>
+        </div>
+    </div>
+
+    <h2>1 Исходные данные</h2>
+    <ul>
+        <li>Тепловая нагрузка за период (энергия): <i>E</i> = <span id="out-E" class="variable">1600</span> кВт·ч;</li>
+        <li>Разность температур хладагента: <i>&Delta;t</i> = <span id="out-dt" class="variable">20</span> °C;</li>
+        <li>Геометрические параметры труб: внутренний диаметр <i>d</i> = <span id="out-d" class="variable">53</span> мм; количество параллельных ветвей <i>N</i> = <span id="out-N" class="variable">1</span> шт;</li>
+        <li>Высота подъёма жидкости: <i>H<sub>гео</sub></i> = <span id="out-hgeo" class="variable">12</span> м; общая протяженность одной ветви <i>L</i> = <span id="out-L" class="variable">45</span> м;</li>
+        <li>Физические константы хладагента: теплоёмкость <i>c</i> = <span id="out-c" class="variable">4.19</span> кДж/(кг·°C), плотность <i>&rho;</i> = 1000 кг/м³.</li>
+        <li>Суммарный коэффициент местных сопротивлений контура: <i>&zeta;</i> = <span id="out-kms" class="variable">5.0</span>;</li>
+    </ul>
+
+    <h2>2 Спецификация и верификация диаметров (Справочные данные)</h2>
+    <table class="latex-table">
+        <thead>
+            <tr>
+                <th>Условный проход / Тип</th>
+                <th>Внутренний диаметр, мм</th>
+                <th>Скорость потока при текущей нагрузке, м/с</th>
+                <th>Статус при работе N ветвей</th>
+            </tr>
+        </thead>
+        <tbody id="dn-table-body">
+            <!-- Строки генерируются JS -->
+        </tbody>
+    </table>
+
+    <h2>3 Расчёт расхода, гидравлики и мощности насоса</h2>
+    
+    <p>3.1 Суммарный требуемый часовой объёмный расход хладагента <i>V</i> для компенсации тепла:</p>
+    <div class="formula-block">
+        <div>V = (E / (c &middot; &rho; &middot; &Delta;t)) &middot; 3600 &approx; <span id="calc-V" class="variable">68.74</span> м³/ч.</div>
+        <div class="formula-num">(1)</div>
+    </div>
+    <p>При этом через каждую из <i>N</i> параллельных ветвей протекает расход <i>V<sub>ветви</sub></i> = <span id="calc-V-branch">68.74</span> м³/ч.</p>
+
+    <p>3.2 Фактическая скорость движения потока <i>W</i> в отдельно взятой трубе:</p>
+    <div class="formula-block">
+        <div>W = (4 &middot; V<sub>ветви</sub>) / (&pi; &middot; d² &middot; 3600) &middot; 10⁶ &approx; <span id="calc-W" class="variable">8.68</span> м/с.</div>
+        <div class="formula-num">(2)</div>
+    </div>
+
+    <p>3.3 Полный потребный напор насоса <i>H<sub>полн</sub></i> с учётом линейных потерь на трение (&lambda; &approx; 0.025) по закону Дарси-Вейсбаха:</p>
+    <div class="formula-block">
+        <div>H<sub>полн</sub> = H<sub>гео</sub> + H<sub>потери</sub> = H<sub>гео</sub> + (&lambda; &middot; (L / d) &middot; (W² / 2g)) &approx; <span id="res-H-m" class="variable">15.20</span> м вод. ст.</div>
+        <div class="formula-num">(3)</div>
+    </div>
+    <p>Потребное избыточное давление в системе составляет &approx; <b><span id="res-H-bar">1.52</span> бар</b>.</p>
+
+    <p>3.4 Требуемая электрическая мощность приводного двигателя насоса <i>N<sub>эл</sub></i> рассчитывается на основе полного расхода и напора:</p>
+    <div class="formula-block">
+        <div>N<sub>эл</sub> = (&rho; &middot; g &middot; (V / 3600) &middot; H<sub>полн</sub>) / (&eta; &middot; 1000) &approx; <span id="res-Power" class="variable">4.37</span> кВт.</div>
+        <div class="formula-num">(4)</div>
+    </div>
+    <p>Где &eta; — полный коэффициент полезного действия насосного агрегата.</p>
+
+    <h2>4 Экспертное заключение по расчёту</h2>
+    <div id="conclusion" class="conclusion-box">
+        <!-- Текст генерируется динамически скриптом -->
+    </div>
+
+    <h2>5 Аналитические графики</h2>
+    <div class="charts-grid">
+        <div class="chart-container-local">
+            <div class="chart-title">График 1: Зависимость суммарного расхода от компенсируемой энергии</div>
+            <svg id="svgExpense" width="100%" height="300" style="overflow:visible; background:#fff; font-family: 'Times New Roman';"></svg>
+        </div>
+        <div class="chart-container-local">
+            <div class="chart-title">График 2: Зависимость скорости потока от внутреннего диаметра трубы</div>
+            <svg id="svgVelocity" width="100%" height="300" style="overflow:visible; background:#fff; font-family: 'Times New Roman';"></svg>
+        </div>
+    </div>
+
+    <button class="btn-print" onclick="window.print()">Сохранить инженерный отчёт в PDF</button>
+</div>
+
+<!-- Подключаем разделенные модули скриптов -->
+<script src="script-charts.js"></script>
+<script src="script-table.js"></script>
+<script src="script-math.js"></script>
+</body>
+</html>
