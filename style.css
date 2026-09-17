@@ -155,44 +155,53 @@ li { margin-bottom: 4px; }
    МОБИЛЬНЫЕ СТИЛИ: включаются автоматически на экранах уже 768 пикселей
    ========================================================================== */
 @media screen and (max-width: 768px) {
-    /* Применяем border-box локально только для мобильных экранов */
-    .input-panel, .input-group, input, select {
-        box-sizing: border-box;
-    }
-
     body {
         padding: 10px 5px;
-        font-size: 12pt; /* Уменьшаем базовый текст, чтобы он пропорционально смотрелся на телефоне */
+        font-size: 12pt;
     }
+    
     .latex-page {
-        padding: 20px 15px; /* Убираем гигантские поля А4, даем больше места контенту */
+        padding: 20px 15px;
+        width: 100%;
+        overflow-hidden: hidden; /* Защита от случайного горизонтального скролла страницы */
     }
+    
     h1.title {
         font-size: 14pt;
         margin-bottom: 20px;
     }
+    
     h2 {
         font-size: 13pt;
     }
-    /* Перестраиваем панель управления из 3-х колонок в 1 вертикальный ряд */
+    
     .grid-3 {
         grid-template-columns: 1fr; 
         gap: 12px;
     }
-    /* На смартфонах прячем номера формул в край или переносим их, чтобы формулы не сжимались */
+
+    /* ---------------------------------------------------------------------- */
+    /* ИСПРАВЛЕНИЕ: Локально переключаем модель расчета размеров для мобильных полей */
+    .input-panel, .input-group, input, select, button {
+        box-sizing: border-box; 
+        width: 100%; /* Гарантируем, что они займут ровно ширину контейнера */
+    }
+    /* ---------------------------------------------------------------------- */
+    
     .formula-block {
         padding-left: 10px;
         flex-direction: column;
         align-items: flex-start;
         font-size: 11pt;
     }
+    
     .formula-num {
         align-self: flex-end;
         font-size: 9pt;
         color: #666;
         margin-top: 5px;
     }
-    /* Делаем таблицу прокручиваемой по горизонтали, чтобы она не сминала текст в колонках */
+    
     .latex-table {
         display: block;
         width: 100%;
@@ -200,6 +209,7 @@ li { margin-bottom: 4px; }
         white-space: nowrap;
         font-size: 10pt;
     }
+    
     .conclusion-box {
         font-size: 11pt;
         padding: 15px;
