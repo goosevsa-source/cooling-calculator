@@ -241,7 +241,7 @@ li { margin-bottom: 4px; }
     }
 
     /* Внутренние элементы и поля ввода ужимаем строго в рамки серой панели */
-    .input-panel, .input-group, input, select, button, .btn-print {
+    .input-panel, .input-group, input, select, button {
         box-sizing: border-box !important; 
         width: 100% !important;
         max-width: 100% !important;
@@ -291,7 +291,7 @@ li { margin-bottom: 4px; }
     }
     /* Точечно переопределяем ширину кнопки PDF конкретно на смартфонах */
     .btn-print {
-        width: 85% !important; /* Кнопка займет 85% экрана, гарантированно не вылезая за края */
+        width: 75% !important; /* Кнопка займет 75% экрана, гарантированно не вылезая за края */
         max-width: 260px !important;
         margin: 30px auto 0 auto !important; /* Центрируем по горизонтали */
         padding: 10px 15px !important; /* Компактные отступы для телефона */
