@@ -1,0 +1,27 @@
+<svg xmlns="http://w3.org" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Благородный темно-синий инженерный фон с закруглением, как у иконок приложений -->
+  <rect width="512" height="512" rx="110" fill="#003366"/>
+  
+  <!-- Торец (фланец) магистральной трубы по центру -->
+  <circle cx="256" cy="256" r="140" fill="none" stroke="#e2e8f0" stroke-width="24"/>
+  <circle cx="256" cy="256" r="95" fill="none" stroke="#94a3b8" stroke-width="8" stroke-dasharray="20,15"/>
+  
+  <!-- Внутренний просвет трубы (поток жидкости) -->
+  <circle cx="256" cy="256" r="80" fill="#1e3a8a"/>
+
+  <!-- Задвижка / Вентиль (инженерный штурвал поверх трубы) -->
+  <!-- Центральная ось вентиля -->
+  <circle cx="256" cy="256" r="28" fill="#cbd5e1" stroke="#475569" stroke-width="6"/>
+  
+  <!-- Внешнее кольцо штурвала вентиля -->
+  <circle cx="256" cy="256" r="185" fill="none" stroke="#ef4444" stroke-width="20"/>
+  
+  <!-- Четыре спицы управления вентилем -->
+  <path d="M 256 71 L 256 228 M 256 284 L 256 441 M 71 256 L 228 256 M 284 256 L 441 256" stroke="#ef4444" stroke-width="16" stroke-linecap="round"/>
+  
+  <!-- Рукоятки на кольце штурвала для объема -->
+  <circle cx="256" cy="71" r="16" fill="#b91c1c"/>
+  <circle cx="256" cy="441" r="16" fill="#b91c1c"/>
+  <circle cx="71" cy="256" r="16" fill="#b91c1c"/>
+  <circle cx="441" cy="256" r="16" fill="#b91c1c"/>
+</svg>
