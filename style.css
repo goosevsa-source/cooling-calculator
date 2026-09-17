@@ -7,20 +7,25 @@ body {
     margin: 0;
     padding: 30px 10px;
 }
+
+/* Основной контейнер-лист */
 .latex-page {
+    width: 100%;
     max-width: 900px;
     margin: 0 auto;
     background: #fff;
     padding: 50px 70px;
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
+
 h1.title {
     text-align: center;
     font-size: 18pt;
     font-weight: bold;
     margin-bottom: 35px;
-    line-height: 1.3; /* Задает аккуратный и красивый отступ между строками заголовка */
+    line-height: 1.3;
 }
+
 h2 {
     font-size: 15pt;
     font-weight: bold;
@@ -29,8 +34,10 @@ h2 {
     border-bottom: 1px solid #000;
     padding-bottom: 5px;
 }
+
 ul { padding-left: 30px; }
 li { margin-bottom: 4px; }
+
 .formula-block {
     display: flex;
     justify-content: space-between;
@@ -40,6 +47,8 @@ li { margin-bottom: 4px; }
     font-style: italic;
 }
 .formula-num { font-style: normal; }
+
+/* Адаптивная таблица */
 .latex-table {
     width: 100%;
     border-collapse: collapse;
@@ -71,9 +80,10 @@ li { margin-bottom: 4px; }
     border-bottom: 1px dashed #ccc;
     padding-bottom: 5px;
 }
+
+/* Сетка по умолчанию — 3 колонки для ПК */
 .grid-3 {
     display: grid;
-    /* Явно задаем три абсолютно равные колонки по 1 часть (1fr) каждая */
     grid-template-columns: 1fr 1fr 1fr; 
     gap: 15px;
 }
@@ -96,6 +106,8 @@ li { margin-bottom: 4px; }
     padding: 15px;
     background: #fff;
     margin-top: 10px;
+    width: 100%;
+    overflow-x: auto; /* Если график не влезет на очень узком экране, появится прокрутка самого графика, а не всей страницы */
 }
 .chart-title {
     text-align: center;
@@ -104,26 +116,16 @@ li { margin-bottom: 4px; }
     margin-bottom: 10px;
 }
 
-/* Карточки автоматического экспертного заключения */
 .conclusion-box {
     margin: 20px 0;
     padding: 20px;
     border-radius: 4px;
     font-size: 13pt;
 }
-.conclusion-success {
-    background-color: #f0fdf4;
-    border-left: 5px solid #16a34a;
-}
-.conclusion-warning {
-    background-color: #fffbeb;
-    border-left: 5px solid #d97706;
-}
-.conclusion-danger {
-    background-color: #fef2f2;
-    border-left: 5px solid #dc2626;
-}
-/* Красивый стиль для инженерной кнопки автоподбора */
+.conclusion-success { background-color: #f0fdf4; border-left: 5px solid #16a34a; }
+.conclusion-warning { background-color: #fffbeb; border-left: 5px solid #d97706; }
+.conclusion-danger { background-color: #fef2f2; border-left: 5px solid #dc2626; }
+
 #btn-autoselect {
     background-color: #0056b3;
     color: white;
@@ -139,12 +141,8 @@ li { margin-bottom: 4px; }
     width: 100%;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-#btn-autoselect:hover {
-    background-color: #003d82;
-}
-#btn-autoselect:active {
-    background-color: #002654;
-}
+#btn-autoselect:hover { background-color: #003d82; }
+
 .btn-print {
     background-color: #222; color: white; padding: 10px 25px;
     border: none; border-radius: 4px; font-size: 12pt; cursor: pointer;
@@ -152,6 +150,61 @@ li { margin-bottom: 4px; }
 }
 .btn-print:hover { background-color: #000; }
 .variable { font-weight: bold; }
+
+/* ==========================================================================
+   МОБИЛЬНЫЕ СТИЛИ: включаются автоматически на экранах уже 768 пикселей
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    /* Применяем border-box локально только для мобильных экранов */
+    .input-panel, .input-group, input, select {
+        box-sizing: border-box;
+    }
+
+    body {
+        padding: 10px 5px;
+        font-size: 12pt; /* Уменьшаем базовый текст, чтобы он пропорционально смотрелся на телефоне */
+    }
+    .latex-page {
+        padding: 20px 15px; /* Убираем гигантские поля А4, даем больше места контенту */
+    }
+    h1.title {
+        font-size: 14pt;
+        margin-bottom: 20px;
+    }
+    h2 {
+        font-size: 13pt;
+    }
+    /* Перестраиваем панель управления из 3-х колонок в 1 вертикальный ряд */
+    .grid-3 {
+        grid-template-columns: 1fr; 
+        gap: 12px;
+    }
+    /* На смартфонах прячем номера формул в край или переносим их, чтобы формулы не сжимались */
+    .formula-block {
+        padding-left: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 11pt;
+    }
+    .formula-num {
+        align-self: flex-end;
+        font-size: 9pt;
+        color: #666;
+        margin-top: 5px;
+    }
+    /* Делаем таблицу прокручиваемой по горизонтали, чтобы она не сминала текст в колонках */
+    .latex-table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        font-size: 10pt;
+    }
+    .conclusion-box {
+        font-size: 11pt;
+        padding: 15px;
+    }
+}
 
 @media print {
     body { background: white; padding: 0; }
