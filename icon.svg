@@ -1,27 +1,127 @@
-<svg xmlns="http://w3.org" viewBox="0 0 512 512" width="100%" height="100%">
-  <!-- Благородный темно-синий инженерный фон с закруглением, как у иконок приложений -->
-  <rect width="512" height="512" rx="110" fill="#003366"/>
-  
-  <!-- Торец (фланец) магистральной трубы по центру -->
-  <circle cx="256" cy="256" r="140" fill="none" stroke="#e2e8f0" stroke-width="24"/>
-  <circle cx="256" cy="256" r="95" fill="none" stroke="#94a3b8" stroke-width="8" stroke-dasharray="20,15"/>
-  
-  <!-- Внутренний просвет трубы (поток жидкости) -->
-  <circle cx="256" cy="256" r="80" fill="#1e3a8a"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
 
-  <!-- Задвижка / Вентиль (инженерный штурвал поверх трубы) -->
-  <!-- Центральная ось вентиля -->
-  <circle cx="256" cy="256" r="28" fill="#cbd5e1" stroke="#475569" stroke-width="6"/>
-  
-  <!-- Внешнее кольцо штурвала вентиля -->
-  <circle cx="256" cy="256" r="185" fill="none" stroke="#ef4444" stroke-width="20"/>
-  
-  <!-- Четыре спицы управления вентилем -->
-  <path d="M 256 71 L 256 228 M 256 284 L 256 441 M 71 256 L 228 256 M 284 256 L 441 256" stroke="#ef4444" stroke-width="16" stroke-linecap="round"/>
-  
-  <!-- Рукоятки на кольце штурвала для объема -->
-  <circle cx="256" cy="71" r="16" fill="#b91c1c"/>
-  <circle cx="256" cy="441" r="16" fill="#b91c1c"/>
-  <circle cx="71" cy="256" r="16" fill="#b91c1c"/>
-  <circle cx="441" cy="256" r="16" fill="#b91c1c"/>
-</svg>
+<svg
+   width="504.30212"
+   height="504.26944"
+   viewBox="0 0 504.30212 504.26944"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="true"
+     showborder="false"
+     inkscape:clip-to-page="false"><inkscape:grid
+       id="grid1"
+       units="px"
+       originx="-4.7572589"
+       originy="-5.3519139"
+       spacingx="1"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       visible="true" /></sodipodi:namedview><defs
+     id="defs1"><linearGradient
+       id="linearGradient5"
+       inkscape:collect="always"><stop
+         style="stop-color:#9e00ff;stop-opacity:1"
+         offset="0"
+         id="stop4" /><stop
+         style="stop-color:#fe7300;stop-opacity:1"
+         offset="1"
+         id="stop5" /></linearGradient><linearGradient
+       id="linearGradient2"
+       inkscape:collect="always"><stop
+         style="stop-color:#9e00ff;stop-opacity:1"
+         offset="0"
+         id="stop2" /><stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop3" /></linearGradient><linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2"
+       id="linearGradient3"
+       x1="261.0546"
+       y1="379.98605"
+       x2="260.45993"
+       y2="-136.77119"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(4.7572589,5.3519139)" /><linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5"
+       id="linearGradient4"
+       x1="268.78513"
+       y1="115.95818"
+       x2="269.97446"
+       y2="407.3403"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(4.7572589,5.3519139)" /></defs><g
+     inkscape:label="Слой 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-4.7572589,-5.3519139)"><rect
+       style="fill:url(#linearGradient3);fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:square;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect1"
+       width="504.30212"
+       height="504.26944"
+       x="4.7572589"
+       y="5.3519139"
+       rx="73.14286"
+       ry="81.468063" /><rect
+       style="fill:url(#linearGradient4);fill-opacity:1;stroke:none;stroke-width:0.999996;stroke-linecap:square;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect2"
+       width="491.21881"
+       height="491.18698"
+       x="11.298916"
+       y="11.893143"
+       rx="73.14286"
+       ry="81.468063" /><text
+       xml:space="preserve"
+       style="font-size:248.017px;line-height:265.733px;font-family:System-ui;-inkscape-font-specification:System-ui;letter-spacing:0px;fill:#a6ff00;fill-opacity:1;stroke:#ff0000;stroke-width:0.999999;stroke-linecap:square;stroke-opacity:1;paint-order:markers fill stroke"
+       x="41.693562"
+       y="260.98087"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:248.017px;line-height:265.733px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';fill:#a6ff00;fill-opacity:1;stroke:#ff0000;stroke-width:0.999999;stroke-opacity:1"
+         x="41.693562"
+         y="260.98087">V</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:248.017px;line-height:265.733px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';letter-spacing:0px;fill:#a6ff00;fill-opacity:1;stroke:#ff0000;stroke-width:0.999999;stroke-linecap:square;stroke-opacity:1;paint-order:markers fill stroke"
+       x="149.47672"
+       y="319.92477"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="fill:#a6ff00;fill-opacity:1;stroke:#ff0000;stroke-width:0.999999;stroke-opacity:1"
+         x="149.47672"
+         y="319.92477">M</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:248.017px;line-height:265.733px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';letter-spacing:0px;fill:#a6ff00;fill-opacity:1;stroke:#ff0000;stroke-width:0.999999;stroke-linecap:square;stroke-opacity:1;paint-order:markers fill stroke"
+       x="316.20377"
+       y="415.91913"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="fill:#a6ff00;fill-opacity:1;stroke:#ff0000;stroke-width:0.999999;stroke-opacity:1"
+         x="316.20377"
+         y="415.91913">C</tspan></text></g></svg>
