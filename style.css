@@ -155,72 +155,82 @@ li { margin-bottom: 4px; }
    МОБИЛЬНЫЕ СТИЛИ: включаются автоматически на экранах уже 768 пикселей
    ========================================================================== */
 @media screen and (max-width: 768px) {
+    /* 1. Обнуляем внешние поля самого браузера, чтобы рамки корпуса не влияли на ширину */
     body {
-        padding: 10px 5px;
-        font-size: 12pt;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important; /* Намертво запирает экран от бокового качания */
+        font-size: 11pt;
     }
     
+    /* 2. Привязываем страницу точно к ширине экрана с микро-полями по 8px (0.5мм) */
     .latex-page {
-        padding: 20px 12px; /* Чуть уменьшили боковые отступы */
-        width: 100%;
-        max-width: 100vw;   /* Жестко ограничили ширину размером экрана устройства */
-        overflow-x: hidden; /* КРИТИЧЕСКИ ВАЖНО: полностью блокирует боковой люфт самой страницы */
+        padding: 15px 8px !important; 
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-shadow: none !important; /* Убираем тени, на телефоне они не нужны */
+        overflow-x: hidden !important;
     }
     
-    h1.title {
-        font-size: 14pt;
-        margin-bottom: 20px;
-    }
-    
-    h2 {
-        font-size: 13pt;
-    }
+    h1.title { font-size: 13pt; margin-bottom: 15px; }
+    h2 { font-size: 12pt; margin-top: 20px; }
     
     .grid-3 {
         grid-template-columns: 1fr; 
-        gap: 12px;
+        gap: 10px;
     }
 
-    /* ---------------------------------------------------------------------- */
-    /* ИСПРАВЛЕНИЕ: Локально переключаем модель расчета размеров для мобильных полей */
+    /* Внутренние элементы и поля ввода ужимаем строго в рамки серой панели */
     .input-panel, .input-group, input, select, button {
-        box-sizing: border-box; 
-        width: 100%; /* Гарантируем, что они займут ровно ширину контейнера */
+        box-sizing: border-box !important; 
+        width: 100% !important;
+        max-width: 100% !important;
     }
-    /* ---------------------------------------------------------------------- */
+    
+    /* Изолируем прокрутку только внутри таблицы */
+    .latex-table {
+        display: block;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: auto !important;
+        white-space: nowrap;
+        font-size: 10pt;
+        -webkit-overflow-scrolling: touch;
+        box-sizing: border-box;
+    }
     
     .formula-block {
-        padding-left: 10px;
+        padding-left: 5px;
         flex-direction: column;
         align-items: flex-start;
-        font-size: 11pt;
+        font-size: 10.5pt;
     }
     
     .formula-num {
         align-self: flex-end;
         font-size: 9pt;
         color: #666;
-        margin-top: 5px;
-    }
-    
-    .latex-table {
-        display: block;
-        width: 100%;
-        overflow-x: auto;   /* Оставляет горизонтальную прокрутку ТОЛЬКО внутри самой таблицы */
-        white-space: nowrap;
-        font-size: 10pt;
-        -webkit-overflow-scrolling: touch; /* Делает прокрутку таблицы пальцем очень плавной */
+        margin-top: 3px;
     }
     
     .conclusion-box {
         font-size: 11pt;
-        padding: 15px;
+        padding: 12px;
+        box-sizing: border-box;
     }
     
-    /* Дополнительно фиксируем ширину SVG-контейнеров графиков */
+    /* Корректируем адаптивность SVG-графиков */
+    .chart-container-local {
+        width: 100% !important;
+        box-sizing: border-box;
+    }
     .chart-container-local svg {
-        max-width: 100%;
-        height: auto;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
     }
 }
 
