@@ -179,5 +179,13 @@
 <script src="script-charts.js"></script>
 <script src="script-table.js"></script>
 <script src="script-math.js"></script>
+<!-- Регистрируем Service Worker для активации кнопки установки (PWA) -->
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+        .then(function(reg) { console.log('Service Worker зарегистрирован успешно.'); })
+        .catch(function(err) { console.log('Ошибка регистрации Service Worker: ', err); });
+}
+</script>
 </body>
 </html>
