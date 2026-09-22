@@ -5,19 +5,13 @@
   "description": "Инженерный калькулятор расхода охлаждающей воды, скорости потока и подбора мощности насоса.",
   "icons": [
     {
-      "src": "icon.ico?fresh=1",
-      "sizes": "16x16 32x32 48x48 256x256",
-      "type": "image/x-icon",
-      "purpose": "any"
-    },
-    {
       "src": "valve-icon.svg?fresh=1",
       "sizes": "512x512",
       "type": "image/svg+xml",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     }
   ],
-  "start_url": "index.html",
+  "start_url": "index.html?fresh=1",
   "background_color": "#003366",
   "theme_color": "#003366",
   "display": "standalone",
