@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Комплексный инженерный расчёт системы охлаждения</title>
     
-    <!-- Подключение PWA манифеста -->
-    <link rel="manifest" href="manifest.json?v=2" />
+    <!-- Манифест для запуска PWA-оболочки (плюсика) -->
+    <link rel="manifest" href="manifest.json?fresh=1">
     
-    <!-- Подключение ico-иконки для всех типов устройств -->
-    <link rel="icon" type="image/x-icon" href="icon.ico">
-    <link rel="apple-touch-icon" href="icon.ico?fresh=1">
+    <!-- Прямое подключение .ico ДЛЯ WINDOWS И БОКОВОЙ ПАНЕЛИ ЯНДЕКСА -->
+    <link rel="icon" type="image/x-icon" href="icon.ico?fresh=1">
+    <link rel="shortcut icon" type="image/x-icon" href="icon.ico?fresh=1">
     
-    <!-- Цвет панели управления в мобильных браузерах -->
+    <!-- Резервный apple-touch для смартфонов -->
+    <link rel="apple-touch-icon" href="valve-icon.svg?fresh=1">
+    
     <meta name="theme-color" content="#003366">
-    
     <link rel="stylesheet" href="style.css">
 </head>
+
 
 <body>
 
