@@ -1,17 +1,18 @@
 {
   "id": "/hydraulics-app",
+
   "short_name": "Гидравлика",
   "name": "Расчёт контура охлаждения и гидравлики",
   "description": "Инженерный калькулятор расхода охлаждающей воды, скорости потока и подбора мощности насоса.",
   "icons": [
     {
-      "src": "valve-icon.svg?fresh=1",
+      "src": "cool-valve.svg?fresh=2",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ],
-  "start_url": "index.html?fresh=1",
+  "start_url": "index.html?fresh=2",
   "background_color": "#003366",
   "theme_color": "#003366",
   "display": "standalone",
