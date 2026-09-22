@@ -1,5 +1,5 @@
 {
-  "id": "/hydraulics-app1",
+  "id": "/hydraulics-app2",
 
   "short_name": "Гидравлика",
   "name": "Расчёт контура охлаждения и гидравлики",
@@ -12,7 +12,7 @@
       "purpose": "any maskable"
     }
   ],
-  "start_url": "index.html?fresh=3",
+  "start_url": "index.html",
   "background_color": "#003366",
   "theme_color": "#003366",
   "display": "standalone",
